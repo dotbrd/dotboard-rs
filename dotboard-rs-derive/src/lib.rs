@@ -12,11 +12,27 @@ pub fn derive_object(input: TokenStream) -> TokenStream {
 fn impl_object(ast: &syn::DeriveInput) -> TokenStream {
     // Get the type of the object
     let name = &ast.ident;
-    //let obj_type = name.to_string().to_lowercase();
+    let object_type = name.to_string().to_lowercase();
 
     quote! {
         impl Object for #name {
+            fn children(&self) -> Vec<&dyn Object> {
+                vec![self]
+            }
+
+            fn mv(&mut self, other: &mut dyn Object) {
+                
+            }
+
+            fn object_type(&self) -> &str {
+                #object_type
+            }
+
             fn read(&mut self) {
+
+            }
+
+            fn write(&self) {
 
             }
         }

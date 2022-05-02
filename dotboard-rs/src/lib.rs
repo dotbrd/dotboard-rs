@@ -2,8 +2,9 @@ use dotboard_rs_derive::Object;
 use std::path::PathBuf;
 
 pub trait Object {
-    fn children(&self) -> &Self;
-    fn mv(&self, other: &Self);
+    fn children(&self) -> Vec<&dyn Object>;
+    fn mv(&mut self, other: &mut dyn Object);
+    fn object_type(&self) -> &str;
     fn read(&mut self);
     fn write(&self);
 }
