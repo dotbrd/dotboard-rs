@@ -1,0 +1,5 @@
+[workspace]
+members = [
+	"dotboard-rs",
+	"dotboard-rs-derive",
+]

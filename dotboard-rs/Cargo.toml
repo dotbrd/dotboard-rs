@@ -1,0 +1,7 @@
+[package]
+name = "dotboard-rs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dotboard-rs-derive = { path = "../dotboard-rs-derive" }

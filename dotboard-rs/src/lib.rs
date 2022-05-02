@@ -1,0 +1,38 @@
+use dotboard_rs_derive::Object;
+use std::path::PathBuf;
+
+pub trait Object {
+    fn children(&self) -> &Self;
+    fn mv(&self, other: &Self);
+    fn read(&mut self);
+    fn write(&self);
+}
+
+#[derive(Object)]
+pub struct Todo {
+    title: String,
+    description: String,
+    attachments: Data,
+    labels: Vec<String>,
+    deadlines: Vec<String>,
+    assignees: Vec<String>,
+}
+
+#[derive(Object)]
+pub struct Data {
+    files: Vec<PathBuf>,
+}
+
+#[derive(Object)]
+pub struct Board {
+    title: String,
+    description: String,
+    lists: Vec<List>,
+}
+
+#[derive(Object)]
+pub struct List {
+    title: String,
+    description: String,
+    todos: Vec<Todo>,
+}
